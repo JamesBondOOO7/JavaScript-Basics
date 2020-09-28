@@ -45,7 +45,7 @@ console.log(s1.replace('Manan.','James.'));
 let fruit1 = 'Orange';
 let fruit2 = 'Apple';
 let myHtml = `Hello ${name}
-    <h1> Thus is heading </h1>
+    <h1> This is a heading </h1>
     <p>You like ${fruit1} and ${fruit2} </p>`
 
 document.body.innerHTML = myHtml;

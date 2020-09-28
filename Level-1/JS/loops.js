@@ -54,7 +54,7 @@ while( l<10 )
 // Iterating on arrays
 
 console.log("Start");
-let arr = [1,2,3,4,5,6,7,8,9,10];
+let arr = [10,20,30,40,50,60,70,80,90,100];
 arr.forEach(function(element) {
     console.log(element);
 })
@@ -81,3 +81,15 @@ arr.forEach(function(element, index, array) {
 })
 
 console.log("Done");
+
+// Star Pattern
+
+for( let i = 0 ; i<5 ; i++)
+{
+    let str = "";
+    for (let j = 0 ; j<=i ; j++)
+    {
+        str += "* ";
+    }
+    console.log(str);
+}
