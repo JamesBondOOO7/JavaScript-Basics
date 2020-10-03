@@ -10,21 +10,58 @@ Whenever user clicks away ( Event Listener : blur ), save the node into the loca
 
 */
 
+//  Creating an element
+let divElem = document.createElement('div');
 
-document.getElementById('ulchild').addEventListener('click',function(){
+let text;
 
-    console.log("Hello");
+// Retreiving value from local storage
+let val = localStorage.getItem('text');
+if( val == null )
+{
+    // Default text to the new element
+    text = document.createTextNode('This is my element. Click to edit it');
+}
+else
+{
+    text = document.createTextNode(val);
+}
+// Giving text to the new element
+divElem.appendChild(text);
 
-    let ele = document.getElementById('ulchild');
-    // let new_element = document.createElement('li');
-    // new_element.className = 'ulchild';
+// Giving id, class and style to the new element
+divElem.setAttribute('id','elem');
+divElem.setAttribute('class','elem');
+divElem.setAttribute('style','border: 2px solid black; width: 220px; margin: 34px; padding: 23px');
 
-    // // Adding a text area for input
-    // let txt = document.createElement('textarea');
-    // txt.className = 'this area';
-    // txt.style = 'position:relative; margin-left:40%; mrgin-top:10%';
-    // ele.appendChild(txt);
+// The class of the tag under which the element is to be inserted
+let container = document.querySelector('.container');
 
-    // let notes = localStorage.getItem("this area");
-    // console.log(notes);
+// The element before which the new element is to be inserted
+let first = document.getElementById('first');
+
+// Insert the element before the element with id first
+container.insertBefore(divElem, first);
+
+console.log(divElem, container, first);
+
+// Adding an Event Listener
+
+divElem.addEventListener('click', function(){
+
+    let noOfTextAreas = document.getElementsByClassName('textarea').length;
+
+    if( noOfTextAreas == 0)
+    {
+        let html = divElem.innerHTML;
+        divElem.innerHTML = `<textarea class="textarea" id="textarea" rows="3">${html}</textarea>`;
+    }
+
+    // To save, we will use the blur event
+    let textarea =  document.getElementById('textarea');
+    textarea.addEventListener('blur',function(){
+
+        divElem.innerHTML = textarea.value;
+        localStorage.setItem('text', textarea.value);
+    });
 });
